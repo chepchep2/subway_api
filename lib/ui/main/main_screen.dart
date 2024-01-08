@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:subway_api/data/model/subway_item.dart';
 import 'package:subway_api/data/repository/subway_repository_impl.dart';
+import 'package:subway_api/ui/main/main_view_model.dart';
 import 'package:subway_api/ui/widget/subway_item_widget.dart';
 
 class MainScreen extends StatefulWidget {
@@ -11,17 +12,9 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final repository = SubwayRepositoryImple();
-
   final subwayNameTextEditingController = TextEditingController();
 
-  List<SubwayItem> subwayItems = [];
-
-  Future<void> getSubwayNames(String name) async {
-    subwayItems = await repository.getSubwayItem(name);
-
-    setState(() {});
-  }
+  final viewModel = MainViewModel();
 
   @override
   void dispose() {
@@ -49,7 +42,7 @@ class _MainScreenState extends State<MainScreen> {
                   hintText: '역 이름을 적으세요.',
                   suffixIcon: IconButton(
                     onPressed: () {
-                      getSubwayNames(subwayNameTextEditingController.text);
+                      viewModel.getSubwayNames(subwayNameTextEditingController.text);
                     },
                     icon: const Icon(Icons.search),
                   ),
@@ -60,9 +53,9 @@ class _MainScreenState extends State<MainScreen> {
               ),
               Expanded(
                 child: ListView.separated(
-                  itemCount: subwayItems.length,
+                  itemCount: viewModel.subwayItems.length,
                   itemBuilder: (context, index) {
-                    final subwayItem = subwayItems[index];
+                    final subwayItem = viewModel.subwayItems[index];
                     return SubwayItemWidget(subwayItem: subwayItem);
                   },
                   separatorBuilder: (BuildContext context, int index) {
