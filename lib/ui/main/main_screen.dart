@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:subway_api/data/model/subway_item.dart';
-import 'package:subway_api/data/repository/mock_repository.dart';
+import 'package:subway_api/data/repository/subway_repository_impl.dart';
 import 'package:subway_api/ui/widget/subway_item_widget.dart';
 
 class MainScreen extends StatefulWidget {
@@ -11,7 +11,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final repository = MockRepository();
+  final repository = SubwayRepositoryImple();
 
   final subwayNameTextEditingController = TextEditingController();
 
