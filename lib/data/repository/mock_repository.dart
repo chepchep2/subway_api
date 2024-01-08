@@ -3,8 +3,8 @@ import 'package:subway_api/data/repository/subway_repository.dart';
 
 class MockRepository implements SubwayRepository {
   @override
-  Future<List<SubwayItem>> getSubwayItem(String query) async {
-    if (query == '서울') {
+  Future<List<SubwayItem>> getSubwayItem(String name) async {
+    if (name == '서울') {
       return [
         SubwayItem(
           subwayId: "1065",

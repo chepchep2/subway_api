@@ -25,8 +25,8 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     List<SubwayItem> subwayItems = [];
 
-    Future<void> getSubwayNames(String query) async {
-      subwayItems = await repository.getSubwayItem(query);
+    Future<void> getSubwayNames(String name) async {
+      subwayItems = await repository.getSubwayItem(name);
 
       setState(() {});
     }
