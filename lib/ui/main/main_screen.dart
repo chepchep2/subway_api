@@ -15,6 +15,14 @@ class _MainScreenState extends State<MainScreen> {
 
   final subwayNameTextEditingController = TextEditingController();
 
+  List<SubwayItem> subwayItems = [];
+
+  Future<void> getSubwayNames(String name) async {
+    subwayItems = await repository.getSubwayItem(name);
+
+    setState(() {});
+  }
+
   @override
   void dispose() {
     subwayNameTextEditingController.dispose();
@@ -23,18 +31,10 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<SubwayItem> subwayItems = [];
-
-    Future<void> getSubwayNames(String name) async {
-      subwayItems = await repository.getSubwayItem(name);
-
-      setState(() {});
-    }
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(32.0),
           child: Column(
             children: [
               TextField(
@@ -58,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
               Expanded(
                 child: ListView.builder(
                   itemCount: subwayItems.length,
-                  itemBuilder: (BuildContext context, int index) {
+                  itemBuilder: (context, index) {
                     final subwayItem = subwayItems[index];
                     return SubwayItemWidget(subwayItem: subwayItem);
                   },
