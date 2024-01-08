@@ -13,9 +13,9 @@ class SubwayItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.yellow[100],
+        // color: Colors.yellow[100],
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.black),
+        border: Border.all(color: Colors.blueAccent),
       ),
       child: ListTile(
         title: Text(subwayItem.stationName),

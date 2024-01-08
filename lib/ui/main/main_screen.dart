@@ -15,8 +15,6 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final subwayNameTextEditingController = TextEditingController();
 
-
-
   @override
   void dispose() {
     subwayNameTextEditingController.dispose();
@@ -25,11 +23,14 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-  final viewModel = context.watch<MainViewModel>();
+    final viewModel = context.watch<MainViewModel>();
     return Scaffold(
       appBar: AppBar(
-        title: Text('지하철 도착정보'),
-        backgroundColor: Colors.amber,
+        title: Text(
+          '지하철 도착정보',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.blueAccent,
       ),
       body: SafeArea(
         child: Padding(
@@ -41,14 +42,23 @@ class _MainScreenState extends State<MainScreen> {
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
+                    borderSide: const BorderSide(
+                      width: 4,
+                      color: Color(0xFF4FB6B2),
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
+                    borderSide: const BorderSide(
+                      width: 4,
+                      color: Color(0xFF4FB6B2),
+                    ),
                   ),
                   hintText: '역 이름을 적으세요.',
                   suffixIcon: IconButton(
                     onPressed: () {
-                      viewModel.getSubwayNames(subwayNameTextEditingController.text);
+                      viewModel
+                          .getSubwayNames(subwayNameTextEditingController.text);
                     },
                     icon: const Icon(Icons.search),
                   ),
