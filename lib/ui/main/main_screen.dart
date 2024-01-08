@@ -13,6 +13,14 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final repository = MockRepository();
 
+  final subwayNameTextEditingController = TextEditingController();
+
+  @override
+  void dispose() {
+    subwayNameTextEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     List<SubwayItem> subwayItems = [];
@@ -30,6 +38,7 @@ class _MainScreenState extends State<MainScreen> {
           child: Column(
             children: [
               TextField(
+                controller: subwayNameTextEditingController,
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -40,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
                   hintText: '역 이름을 적으세요.',
                   suffixIcon: IconButton(
                     onPressed: () {
-                      getSubwayNames('서울');
+                      getSubwayNames(subwayNameTextEditingController.text);
                     },
                     icon: const Icon(Icons.search),
                   ),
@@ -48,9 +57,9 @@ class _MainScreenState extends State<MainScreen> {
               ),
               Expanded(
                 child: ListView.builder(
+                  itemCount: subwayItems.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final subwayItem =
-                        SubwayItem(subwayId: "1065", stationName: "서울");
+                    final subwayItem = subwayItems[index];
                     return SubwayItemWidget(subwayItem: subwayItem);
                   },
                 ),
