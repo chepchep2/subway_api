@@ -55,6 +55,9 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                 ),
               ),
+              SizedBox(
+                height: 30,
+              ),
               Expanded(
                 child: ListView.builder(
                   itemCount: subwayItems.length,

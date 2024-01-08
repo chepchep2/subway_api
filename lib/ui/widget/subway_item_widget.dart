@@ -11,9 +11,15 @@ class SubwayItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(subwayItem.stationName),
-      subtitle: Text(subwayItem.subwayId),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.black),
+      ),
+      child: ListTile(
+        title: Text(subwayItem.stationName),
+        subtitle: Text(subwayItem.subwayId),
+      ),
     );
   }
 }
