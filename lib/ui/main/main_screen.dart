@@ -18,7 +18,6 @@ class _MainScreenState extends State<MainScreen> {
     List<SubwayItem> subwayItems = [];
 
     Future<void> getSubwayNames(String query) async {
-
       subwayItems = await repository.getSubwayItem(query);
 
       setState(() {});
@@ -50,7 +49,8 @@ class _MainScreenState extends State<MainScreen> {
               Expanded(
                 child: ListView.builder(
                   itemBuilder: (BuildContext context, int index) {
-                    final subwayItem = getSubwayNames('서울');
+                    final subwayItem =
+                        SubwayItem(subwayId: "1065", stationName: "서울");
                     return SubwayItemWidget(subwayItem: subwayItem);
                   },
                 ),
