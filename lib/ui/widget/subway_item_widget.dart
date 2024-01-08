@@ -18,7 +18,9 @@ class SubwayItemWidget extends StatelessWidget {
       ),
       child: ListTile(
         title: Text(subwayItem.stationName),
-        subtitle: Text(subwayItem.subwayId),
+        subtitle: Text('종착역 : ${subwayItem.lastStation}'),
+        leading: Text(subwayItem.upDown),
+        trailing: Text(subwayItem.arrivalMsg),
       ),
     );
   }

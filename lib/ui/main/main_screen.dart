@@ -59,11 +59,16 @@ class _MainScreenState extends State<MainScreen> {
                 height: 30,
               ),
               Expanded(
-                child: ListView.builder(
+                child: ListView.separated(
                   itemCount: subwayItems.length,
                   itemBuilder: (context, index) {
                     final subwayItem = subwayItems[index];
                     return SubwayItemWidget(subwayItem: subwayItem);
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return SizedBox(
+                      height: 10,
+                    );
                   },
                 ),
               ),

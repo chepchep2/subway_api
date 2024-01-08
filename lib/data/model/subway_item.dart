@@ -1,11 +1,15 @@
 class SubwayItem {
-  String subwayId;
   String stationName;
+  String lastStation;
+  String upDown;
+  String arrivalMsg;
 
 //<editor-fold desc="Data Methods">
   SubwayItem({
-    required this.subwayId,
     required this.stationName,
+    required this.lastStation,
+    required this.upDown,
+    required this.arrivalMsg,
   });
 
   @override
@@ -13,38 +17,52 @@ class SubwayItem {
       identical(this, other) ||
       (other is SubwayItem &&
           runtimeType == other.runtimeType &&
-          subwayId == other.subwayId &&
-          stationName == other.stationName);
+          stationName == other.stationName &&
+          lastStation == other.lastStation &&
+          upDown == other.upDown &&
+          arrivalMsg == other.arrivalMsg);
 
   @override
-  int get hashCode => subwayId.hashCode ^ stationName.hashCode;
+  int get hashCode =>
+      stationName.hashCode ^
+      lastStation.hashCode ^
+      upDown.hashCode ^
+      arrivalMsg.hashCode;
 
   @override
   String toString() {
-    return 'SubwayItem{ subwayId: $subwayId, stationName: $stationName,}';
+    return 'SubwayItem{ stationName: $stationName, lastStation: $lastStation, upDown: $upDown, arrivalMsg: $arrivalMsg,}';
   }
 
   SubwayItem copyWith({
-    String? subwayId,
     String? stationName,
+    String? lastStation,
+    String? upDown,
+    String? arrivalMsg,
   }) {
     return SubwayItem(
-      subwayId: subwayId ?? this.subwayId,
       stationName: stationName ?? this.stationName,
+      lastStation: lastStation ?? this.lastStation,
+      upDown: upDown ?? this.upDown,
+      arrivalMsg: arrivalMsg ?? this.arrivalMsg,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'subwayId': subwayId,
       'stationName': stationName,
+      'lastStation': lastStation,
+      'upDown': upDown,
+      'arrivalMsg': arrivalMsg,
     };
   }
 
   factory SubwayItem.fromMap(Map<String, dynamic> map) {
     return SubwayItem(
-      subwayId: map['subwayId'] as String,
       stationName: map['stationName'] as String,
+      lastStation: map['lastStation'] as String,
+      upDown: map['upDown'] as String,
+      arrivalMsg: map['arrivalMsg'] as String,
     );
   }
 
