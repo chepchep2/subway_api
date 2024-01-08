@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       ),
 
 
-      home: const MyHomePage(title: '왜 안되는거야 조상우 잘될거야에 잘 되라 좀'),
+      home: const MyHomePage(title: '이제 될 것 같습니다.'),
 
     );
   }
