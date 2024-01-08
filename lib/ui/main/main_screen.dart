@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:subway_api/data/model/subway_item.dart';
 import 'package:subway_api/data/repository/mock_repository.dart';
+import 'package:subway_api/ui/widget/subway_item_widget.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -10,17 +11,17 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  final repository = MockRepository();
+
   @override
   Widget build(BuildContext context) {
-    final repository = MockRepository();
-
     List<SubwayItem> subwayItems = [];
 
     Future<void> getSubwayNames(String query) async {
-      subwayItems = await repository.getSubwayItem(query);
-      setState(() {
 
-      });
+      subwayItems = await repository.getSubwayItem(query);
+
+      setState(() {});
     }
 
     return Scaffold(
@@ -38,16 +39,20 @@ class _MainScreenState extends State<MainScreen> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   hintText: '역 이름을 적으세요.',
-                  suffixIcon: IconButton(onPressed: () {
-                    getSubwayNames('서울');
-                  }, icon: const Icon(Icons.search),),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      getSubwayNames('서울');
+                    },
+                    icon: const Icon(Icons.search),
+                  ),
                 ),
               ),
               Expanded(
-                child: ListView.builder(itemBuilder: (BuildContext context, int index) {
-                  return
-                },
-
+                child: ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    final subwayItem = getSubwayNames('서울');
+                    return SubwayItemWidget(subwayItem: subwayItem);
+                  },
                 ),
               ),
             ],
