@@ -12,7 +12,7 @@ class SubwayItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: BoxDecoration(color: Colors.yellow[100],
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: Colors.black),
       ),

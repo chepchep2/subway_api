@@ -27,6 +27,10 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
   final viewModel = context.watch<MainViewModel>();
     return Scaffold(
+      appBar: AppBar(
+        title: Text('지하철 도착정보'),
+        backgroundColor: Colors.amber,
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(32.0),
@@ -51,7 +55,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               SizedBox(
-                height: 30,
+                height: 20,
               ),
               Expanded(
                 child: ListView.separated(
