@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:subway_api/ui/main/main_screen.dart';
+import 'package:subway_api/ui/main/main_view_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +21,11 @@ class MyApp extends StatelessWidget {
       ),
 
 
-      home: const MainScreen(),
+      home: ChangeNotifierProvider(
+          create: (BuildContext context) {
+        return MainViewModel();
+      },
+      child: const MainScreen()),
 
     );
   }

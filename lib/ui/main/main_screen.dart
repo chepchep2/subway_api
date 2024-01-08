@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:subway_api/data/model/subway_item.dart';
 import 'package:subway_api/data/repository/subway_repository_impl.dart';
 import 'package:subway_api/ui/main/main_view_model.dart';
@@ -14,7 +15,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final subwayNameTextEditingController = TextEditingController();
 
-  final viewModel = MainViewModel();
+
 
   @override
   void dispose() {
@@ -24,6 +25,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+  final viewModel = context.watch<MainViewModel>();
     return Scaffold(
       body: SafeArea(
         child: Padding(
