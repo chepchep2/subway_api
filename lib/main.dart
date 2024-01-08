@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:subway_api/routes.dart';
 import 'package:subway_api/ui/main/main_screen.dart';
 import 'package:subway_api/ui/main/main_view_model.dart';
 
@@ -13,20 +14,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       title: 'Flutter',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
-
-
-      home: ChangeNotifierProvider(
-          create: (BuildContext context) {
-        return MainViewModel();
-      },
-      child: const MainScreen()),
-
     );
   }
 }
